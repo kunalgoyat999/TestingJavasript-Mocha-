@@ -39,7 +39,7 @@ app.get("/api/tasks/:id" , (request, response) => {
 app.post("/api/tasks", (request, response) => {
     const { error } = utils.validateTask(request.body);
 
-    if(error) return response.status(400).send("The name should be at least 3 chars long!")
+    if(error) return response.status(404).send("The name should be at least 3 chars long!")
 
     const task = {
         id: tasks.length + 1,
@@ -99,5 +99,5 @@ app.delete("/api/tasks/:id", (request, response) => {
 });
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 module.exports = app.listen(port, () => console.log(`Listening on port ${port}...`));
